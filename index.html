@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO TAGS -->
+<title>NYC Fashion & Editorial Photographer | Taurat Hossain</title>
+<meta name="description" content="Taurat Hossain (he/him) is a New York–based fashion and editorial photographer. Available for editorial, commercial, and documentary assignments worldwide.">
+<meta name="keywords" content="Taurat Hossain, NYC photographer, fashion photographer, editorial photographer, documentary photographer, New York">
+<meta name="author" content="Taurat Hossain">
+<link rel="canonical" href="https://taurathossain.com/">
+<meta property="og:title" content="NYC Fashion & Editorial Photographer | Taurat Hossain">
+<meta property="og:description" content="Taurat Hossain is a New York–based fashion and editorial photographer working across fashion, commercial, and documentary.">
+<meta property="og:image" content="https://taurathossain.com/og-image.jpg">
+<meta property="og:url" content="https://taurathossain.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NYC Fashion & Editorial Photographer | Taurat Hossain">
+<meta name="twitter:image" content="https://taurathossain.com/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f8f4ef;
+  --white:#fdfbf8;
+  --stone:#e4dfd8;
+  --sand:#c6bdb2;
+  --brown:#8a7e74;
+  --dark:#1c1815;
+  --gold:#b8905a;
+  --goldlt:rgba(184,144,90,.18);
+  --serif:'Libre Baskerville',Georgia,serif;
+  --sans:'Jost',sans-serif;
+  --nav-h:58px;
+  --line:rgba(28,24,21,.09);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--dark);font-family:var(--sans);font-weight:300;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%}
+
+/* ══════════════════════════════════════
+   INTRO — centered video + text below
+══════════════════════════════════════ */
+#intro {
+  position: fixed; inset: 0; z-index: 5000;
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  transition: opacity 1.2s ease, visibility 1.2s ease;
+  overflow: hidden;
+}
+#intro.out { opacity: 0; visibility: hidden; pointer-events: none; }
+
+/* ── VIDEO WRAPPER ── */
+.intro-video-wrap {
+  position: relative;
+  width: min(520px, 88vw);   /* centered, responsive width */
+  aspect-ratio: 16/9;         /* change to 9/16 if your clip is vertical */
+  background: #111;
+  overflow: hidden;
+  animation: swell 1s cubic-bezier(.16,1,.3,1) forwards;
+  opacity: 0;
+  animation-delay: .1s;
+  box-shadow: 0 24px 80px rgba(0,0,0,.55);
+}
+
+/*
+  ════════════════════════════════════════════════════════
+  ▼  TO CHANGE YOUR VIDEO — edit only this one src line:
+     Replace  intro.mp4  with your new filename.
+     Drop the file in the same folder as this HTML file.
+  ════════════════════════════════════════════════════════
+*/
+.intro-video-wrap video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Placeholder shown when no video file is present yet */
+.intro-video-placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(160deg, hsl(30,12%,14%) 0%, hsl(25,10%,10%) 100%);
+  flex-direction: column; gap: 10px;
+}
+.intro-video-placeholder span {
+  font-family: var(--sans); font-size: .58rem; letter-spacing: .3em;
+  text-transform: uppercase; color: rgba(184,144,90,.4);
+}
+.intro-video-placeholder svg { opacity: .25; }
+
+/* ── TEXT BLOCK (directly below video) ── */
+.intro-text {
+  text-align: center;
+  margin-top: 28px;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  animation: swell 1s ease forwards; opacity: 0; animation-delay: .5s;
+}
+.intro-name {
+  font-family: var(--serif); font-style: italic; font-weight: 400;
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  letter-spacing: .04em; color: var(--bg); line-height: 1;
+}
+.intro-rule {
+  display: flex; align-items: center; gap: 12px; width: 180px;
+}
+.intro-rule::before, .intro-rule::after {
+  content: ''; flex: 1; height: 1px; background: rgba(184,144,90,.3);
+}
+.intro-gem { width: 4px; height: 4px; background: var(--gold); transform: rotate(45deg); }
+.intro-tagline {
+  font-family: var(--sans); font-weight: 400; font-size: .58rem;
+  letter-spacing: .35em; text-transform: uppercase;
+  color: rgba(248,244,239,.35);
+}
+
+/* ── HUD (progress + skip) ── */
+.intro-hud {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  padding: 0 52px 32px;
+  animation: swell .6s ease forwards; opacity: 0; animation-delay: 1.2s;
+}
+.intro-prog { display: flex; flex-direction: column; gap: 8px; }
+.intro-prog-label {
+  font-family: var(--sans); font-size: .52rem; letter-spacing: .3em;
+  text-transform: uppercase; color: rgba(248,244,239,.2);
+}
+.intro-track {
+  width: 120px; height: 1px; background: rgba(255,255,255,.08); position: relative;
+}
+.intro-dot {
+  position: absolute; left: 0; top: -3px;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--gold);
+  animation: dotSlide 15s linear forwards; animation-delay: .15s;
+}
+.intro-skip {
+  font-family: var(--sans); font-size: .56rem; letter-spacing: .28em;
+  text-transform: uppercase; color: rgba(248,244,239,.28);
+  cursor: pointer; transition: color .25s;
+}
+.intro-skip:hover { color: var(--bg); }
+
+@keyframes swell { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform: none; } }
+@keyframes dotSlide { from { left: 0; } to { left: calc(100% - 7px); } }
+
+/* ── SITE ── */
+#site{opacity:0;transition:opacity 1s ease}
+#site.show{opacity:1}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);
+  background:rgba(253,251,248,.96);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--stone);
+  display:flex;align-items:center;justify-content:space-between;padding:0 44px;
+}
+.nav-logo{
+  font-family:var(--serif);font-style:italic;font-size:1.1rem;
+  letter-spacing:.025em;color:var(--dark);white-space:nowrap;
+  transition:color .2s;
+}
+.nav-logo:hover{color:var(--gold)}
+
+.nav-links{display:flex;align-items:center;list-style:none;gap:0}
+.nav-links>li{position:relative}
+.nav-links>li>a{
+  font-family:var(--sans);font-weight:400;font-size:.6rem;
+  letter-spacing:.18em;text-transform:lowercase;
+  color:var(--brown);padding:0 15px;height:var(--nav-h);
+  display:flex;align-items:center;gap:4px;transition:color .2s;
+}
+.nav-links>li>a:hover{color:var(--dark)}
+.nav-links .motion-lnk>a{color:var(--gold)}
+.nav-links .motion-lnk>a:hover{color:var(--dark)}
+
+.chevron{font-size:.45rem;opacity:.5;transition:transform .2s;display:inline-block}
+.dropdown:hover .chevron{transform:rotate(180deg)}
+
+.dd-panel{
+  display:none;position:absolute;top:calc(var(--nav-h) + 1px);left:0;z-index:300;
+  min-width:200px;background:var(--white);
+  border:1px solid var(--stone);border-top:2px solid var(--gold);
+  padding:10px 0;box-shadow:0 8px 32px rgba(28,24,21,.07);
+}
+.dropdown:hover .dd-panel{display:block}
+.dd-panel a{
+  display:block;padding:9px 22px;font-family:var(--sans);font-size:.58rem;
+  letter-spacing:.14em;color:var(--brown);height:auto;border-left:none;
+  transition:color .15s,padding-left .15s;text-transform:lowercase;white-space:nowrap;
+}
+.dd-panel a:hover{color:var(--dark);padding-left:30px}
+
+.menu-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.menu-btn span{display:block;width:22px;height:1px;background:var(--brown)}
+
+/* ── PAGES ── */
+.page{display:none;min-height:100vh;padding-top:var(--nav-h)}
+.page.active{display:block}
+#pp{display:none;min-height:100vh;padding-top:var(--nav-h)}
+
+/* ── PAGE HEADER ── */
+.page-header{
+  padding:48px 44px 36px;border-bottom:1px solid var(--stone);
+  display:flex;align-items:flex-end;justify-content:space-between;
+}
+.page-header h2{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(1.8rem,4vw,3rem);line-height:1;color:var(--dark);
+}
+.page-header .meta{
+  font-family:var(--sans);font-size:.58rem;letter-spacing:.22em;
+  color:var(--sand);text-align:right;text-transform:lowercase;
+}
+
+/* ── OVERVIEW ── */
+.ov-grid{columns:3;column-gap:14px;padding:14px;margin-top:14px}
+@media(max-width:900px){.ov-grid{columns:2}}
+@media(max-width:540px){.ov-grid{columns:1}}
+
+.gi{break-inside:avoid;margin-bottom:14px;cursor:pointer;position:relative;overflow:hidden}
+.gi img{transition:transform .7s cubic-bezier(.25,.46,.45,.94);display:block;width:100%}
+.gi:hover img{transform:scale(1.03)}
+.gi-cap{
+  padding:9px 0 2px;font-family:var(--sans);font-size:.58rem;
+  letter-spacing:.15em;text-transform:lowercase;color:var(--sand);
+  transition:color .2s;
+}
+.gi:hover .gi-cap{color:var(--dark)}
+
+/* ── WORK LIST ── */
+.work-list{padding:44px;max-width:520px}
+.wli{
+  font-family:var(--serif);font-style:italic;font-size:1rem;
+  border-bottom:1px solid var(--stone);padding:12px 0;color:var(--brown);
+  transition:color .2s,padding-left .2s;cursor:default;
+}
+.wli:hover{color:var(--dark);padding-left:6px}
+
+/* ── TEARSHEETS ── */
+.ts-grid{columns:3;column-gap:14px;padding:14px;margin-top:14px}
+@media(max-width:800px){.ts-grid{columns:2}}
+@media(max-width:480px){.ts-grid{columns:1}}
+.ts-item{break-inside:avoid;margin-bottom:14px}
+.ts-item img{width:100%;display:block}
+
+/* ── MOTION ── */
+.motion-intro{
+  padding:28px 44px 0;font-family:var(--serif);font-style:italic;font-size:.82rem;
+  line-height:1.9;color:var(--brown);max-width:480px;
+}
+.motion-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:14px}
+@media(max-width:800px){.motion-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.motion-grid{grid-template-columns:1fr}}
+.motion-item{aspect-ratio:9/16;background:var(--dark);position:relative;overflow:hidden;cursor:pointer}
+.motion-shimmer{position:absolute;inset:0;background:linear-gradient(135deg,rgba(184,144,90,.03) 0%,transparent 55%,rgba(184,144,90,.05) 100%);transition:opacity .3s}
+.motion-item:hover .motion-shimmer{opacity:0}
+.motion-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.mring{width:54px;height:54px;border:1px solid rgba(184,144,90,.35);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color .3s,transform .3s}
+.motion-item:hover .mring{border-color:var(--gold);transform:scale(1.07)}
+.mlabel{font-family:var(--sans);font-size:.58rem;letter-spacing:.25em;text-transform:lowercase;color:rgba(248,244,239,.28);transition:color .3s}
+.motion-item:hover .mlabel{color:rgba(248,244,239,.6)}
+.mdur{position:absolute;bottom:12px;right:14px;font-family:var(--sans);font-size:.55rem;color:rgba(248,244,239,.2)}
+
+/* ── BIO ── */
+.bio-wrap{display:grid;grid-template-columns:300px 1fr;gap:56px;padding:52px 44px;max-width:1000px}
+@media(max-width:800px){.bio-wrap{grid-template-columns:1fr;gap:28px}}
+.bio-photo{aspect-ratio:3/4;background:var(--stone);overflow:hidden}
+.bio-photo img{width:100%;height:100%;object-fit:cover}
+.bio-text h1{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(1.8rem,4vw,3rem);margin-bottom:28px;line-height:1.05;color:var(--dark)
+}
+.bio-text p{font-family:var(--sans);font-size:.82rem;line-height:1.9;color:var(--brown);margin-bottom:16px;font-weight:300}
+.bio-text p em{color:var(--dark);font-style:italic}
+.bio-text strong{color:var(--dark);font-weight:500}
+.bio-contact{margin-top:28px;display:flex;flex-direction:column;gap:8px}
+.bio-contact a{font-family:var(--sans);font-size:.7rem;letter-spacing:.12em;color:var(--gold);transition:color .2s}
+.bio-contact a:hover{color:var(--dark)}
+
+/* ── CONTACT ── */
+.contact-wrap{max-width:480px;padding:60px 44px}
+.contact-wrap h1{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(2.2rem,5vw,3.8rem);margin-bottom:40px;line-height:1;color:var(--dark)
+}
+.cf{display:flex;flex-direction:column;gap:6px;margin-bottom:22px}
+.cf label{font-family:var(--sans);font-size:.58rem;letter-spacing:.22em;text-transform:lowercase;color:var(--sand)}
+.cf input,.cf textarea{
+  background:transparent;border:none;border-bottom:1px solid var(--stone);
+  padding:10px 0;font-family:var(--sans);font-size:.8rem;color:var(--dark);
+  font-weight:300;outline:none;transition:border-color .2s;resize:none
+}
+.cf input:focus,.cf textarea:focus{border-color:var(--gold)}
+.cf textarea{min-height:90px}
+.c-submit{
+  margin-top:10px;padding:14px 32px;
+  border:1px solid rgba(184,144,90,.4);background:transparent;
+  font-family:var(--sans);font-size:.6rem;letter-spacing:.25em;
+  text-transform:lowercase;color:var(--brown);cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s
+}
+.c-submit:hover{background:var(--gold);color:var(--white);border-color:var(--gold)}
+.c-info{margin-top:44px;border-top:1px solid var(--stone);padding-top:28px}
+.c-info p{font-family:var(--sans);font-size:.75rem;line-height:1.9;color:var(--brown)}
+.c-info a{color:var(--gold)}
+.contact-intro{font-family:var(--sans);font-size:.82rem;line-height:1.85;color:var(--brown);margin-bottom:14px;font-weight:300}
+.contact-direct{margin:32px 0;display:flex;flex-direction:column;gap:10px}
+.contact-direct a{font-family:var(--sans);font-size:.82rem;letter-spacing:.08em;color:var(--gold);transition:color .2s}
+.contact-direct a:hover{color:var(--dark)}
+.contact-divider{width:40px;height:1px;background:var(--stone);margin:32px 0}
+.contact-sent{display:none;margin-top:16px;font-family:var(--sans);font-size:.75rem;letter-spacing:.1em;color:var(--gold)}
+
+/* ── PROJECT PAGE ── */
+.pp-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  padding:44px 44px 32px;border-bottom:1px solid var(--stone);
+}
+.pp-title{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(1.8rem,4vw,3.5rem);line-height:1.05;color:var(--dark)
+}
+.pp-back{
+  font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;text-transform:lowercase;
+  color:var(--sand);cursor:pointer;border-bottom:1px solid var(--stone);padding-bottom:2px;
+  transition:color .2s;white-space:nowrap;margin-left:24px
+}
+.pp-back:hover{color:var(--dark)}
+.pp-nav{display:flex;gap:18px;padding:16px 44px}
+.pp-nb{font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;color:var(--sand);cursor:pointer;transition:color .2s;text-transform:lowercase}
+.pp-nb:hover{color:var(--dark)}
+.pp-nb:last-child{margin-left:auto}
+.pp-gallery{columns:2;column-gap:14px;padding:0 14px 14px}
+@media(max-width:600px){.pp-gallery{columns:1}}
+.pp-img{break-inside:avoid;margin-bottom:14px}
+.pp-img img{width:100%;display:block}
+
+/* ── FOOTER ── */
+footer{
+  padding:36px 44px;border-top:1px solid var(--stone);
+  display:flex;justify-content:space-between;align-items:center;margin-top:80px
+}
+footer span{font-family:var(--sans);font-size:.58rem;letter-spacing:.2em;color:var(--sand);text-transform:lowercase}
+.f-gem{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);opacity:.4}
+
+/* ── MOBILE ── */
+#mobile-nav{
+  display:none;position:fixed;inset:0;z-index:190;
+  background:rgba(253,251,248,.97);backdrop-filter:blur(16px);
+  flex-direction:column;padding:76px 44px 40px;overflow-y:auto
+}
+#mobile-nav.open{display:flex}
+.mn-item{border-bottom:1px solid var(--stone)}
+.mn-item>a{display:block;padding:15px 0;font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--brown);transition:color .2s}
+.mn-item>a:hover{color:var(--dark)}
+.mn-sub{padding:0 0 12px 16px}
+.mn-sub a{display:block;padding:7px 0;font-family:var(--sans);font-size:.65rem;letter-spacing:.14em;color:var(--sand);transition:color .2s}
+.mn-sub a:hover{color:var(--dark)}
+.mn-close{position:absolute;top:20px;right:40px;font-size:1.3rem;color:var(--sand);cursor:pointer;transition:color .2s;font-family:var(--serif);font-style:italic}
+.mn-close:hover{color:var(--dark)}
+
+.badge{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;background:var(--gold);color:var(--white);font-family:var(--sans);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;padding:6px 18px;pointer-events:none}
+
+@media(max-width:900px){.nav-links{display:none}.menu-btn{display:flex}}
+</style>
+</head>
+<body>
+<div class="badge">Option 3 — Soft Luxury · Warm Cream</div>
+
+<!-- INTRO -->
+<div id="intro">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       VIDEO — to swap your clip, change ONLY the src filename below.
+       Drop your new .mp4 in the same folder as this HTML file.
+       Recommended: 15 seconds, horizontal (16:9) or vertical (9:16).
+       To use a vertical clip, change aspect-ratio in CSS to 9/16.
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="intro-video-wrap">
+    <video
+      autoplay
+      muted
+      playsinline
+      src="intro.mp4"
+      id="intro-video"
+    ></video>
+    <!-- Placeholder shown if video file isn't found yet -->
+    <div class="intro-video-placeholder" id="intro-placeholder">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="17" stroke="rgba(184,144,90,.5)" stroke-width="1"/>
+        <path d="M14 11.5L25 18L14 24.5V11.5Z" fill="rgba(184,144,90,.5)"/>
+      </svg>
+      <span>drop intro.mp4 here to activate</span>
+    </div>
+  </div>
+
+  <!-- Text directly below the video -->
+  <div class="intro-text">
+    <div class="intro-name">Taurat Hossain</div>
+    <div class="intro-rule"><div class="intro-gem"></div></div>
+    <div class="intro-tagline">Photographer &amp; Director &nbsp;·&nbsp; New York City</div>
+  </div>
+
+  <!-- Progress dot + skip -->
+  <div class="intro-hud">
+    <div class="intro-prog">
+      <span class="intro-prog-label" id="t">0:15</span>
+      <div class="intro-track"><div class="intro-dot"></div></div>
+    </div>
+    <span class="intro-skip" onclick="skip()">Enter ✦</span>
+  </div>
+
+</div>
+
+<!-- SITE -->
+<div id="site">
+<nav>
+  <a class="nav-logo" href="#" onclick="show('overview');return false">Taurat Hossain</a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="show('overview');return false">overview</a></li>
+    <li class="dropdown">
+      <a href="#">fashion &amp; commercial <span class="chevron">▾</span></a>
+      <div class="dd-panel">
+        <a href="#" onclick="openProject('LeBlanc Studios FW26');return false">LeBlanc Studios FW26</a>
+        <a href="#" onclick="openProject('Lettonne FW26');return false">Lettonne FW26</a>
+        <a href="#" onclick="openProject('Meg Donnelly for Groovevolt');return false">Meg Donnelly for Groovevolt</a>
+        <a href="#" onclick="openProject('Natalie Jane for Groovevolt');return false">Natalie Jane for Groovevolt</a>
+        <a href="#" onclick="openProject('Cosmopolitan');return false">Cosmopolitan</a>
+        <a href="#" onclick="openProject('TYVY NYC Brand Launch');return false">TYVY NYC Brand Launch</a>
+        <a href="#" onclick="openProject('Sibling Rivalry for Signed Mgmt.');return false">Sibling Rivalry for Signed Mgmt.</a>
+        <a href="#" onclick="openProject('SelfmadeSkincare');return false">SelfmadeSkincare</a>
+        <a href="#" onclick="openProject('Cult of Individuality F/W 2024');return false">Cult of Individuality F/W 2024</a>
+        <a href="#" onclick="openProject('Choklids');return false">Choklids</a>
+        <a href="#" onclick="openProject('margo');return false">margo</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="#">documentary <span class="chevron">▾</span></a>
+      <div class="dd-panel">
+        <a href="#" onclick="openProject('Azzah Sultan for trotter&sholer');return false">Azzah Sultan for trotter&amp;sholer</a>
+        <a href="#" onclick="openProject('Zinnat Ferdous, Boxer');return false">Zinnat Ferdous, Boxer</a>
+        <a href="#" onclick="openProject('Gloria Steinem & Synclaire Warren');return false">Gloria Steinem &amp; Synclaire Warren</a>
+        <a href="#" onclick="openProject('Resistance in Los Angeles');return false">Resistance in Los Angeles</a>
+        <a href="#" onclick="openProject('Zohran Mamdani Election Coverage');return false">Zohran Mamdani Election Coverage</a>
+        <a href="#" onclick="openProject('No Kings Day for Documented');return false">No Kings Day for Documented</a>
+        <a href="#" onclick="openProject('St. James Place Block Party');return false">St. James Place Block Party</a>
+        <a href="#" onclick="openProject('Ghosts of Chinatown');return false">Ghosts of Chinatown</a>
+        <a href="#" onclick="openProject('Business Insider Feature');return false">Business Insider Feature</a>
+        <a href="#" onclick="openProject('Alice Austen House');return false">Alice Austen House</a>
+        <a href="#" onclick="openProject('Washington Post: Connie Chung');return false">Washington Post: Connie Chung</a>
+        <a href="#" onclick="openProject('26 Federal Plaza for Documented');return false">26 Federal Plaza for Documented</a>
+        <a href="#" onclick="openProject('Peace for Palestine');return false">Peace for Palestine</a>
+        <a href="#" onclick="openProject('singles');return false">singles</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="#">personal work <span class="chevron">▾</span></a>
+      <div class="dd-panel">
+        <a href="#" onclick="openProject('The Way We Dress When We Are Ourselves');return false">The Way We Dress When We Are Ourselves</a>
+        <a href="#" onclick="openProject('claire');return false">claire</a>
+        <a href="#" onclick="openProject('singles');return false">singles</a>
+      </div>
+    </li>
+    <li><a href="#" onclick="show('work');return false">work</a></li>
+    <li><a href="#" onclick="show('tearsheets');return false">tearsheets</a></li>
+    <li class="motion-lnk"><a href="#" onclick="show('motion');return false">motion</a></li>
+    <li><a href="https://www.instagram.com/taurathossain/" target="_blank">instagram ↗</a></li>
+    <li><a href="#" onclick="show('bio');return false">bio</a></li>
+    <li><a href="#" onclick="show('contact');return false">contact</a></li>
+  </ul>
+  <div class="menu-btn" onclick="toggleMobile()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div id="mobile-nav">
+  <span class="mn-close" onclick="toggleMobile()">close ✕</span>
+  <div class="mn-item"><a href="#" onclick="show('overview');toggleMobile();return false">overview</a></div>
+  <div class="mn-item">
+    <a href="#">fashion &amp; commercial</a>
+    <div class="mn-sub">
+      <a href="#" onclick="openProject('LeBlanc Studios FW26');toggleMobile();return false">LeBlanc Studios FW26</a>
+      <a href="#" onclick="openProject('Cosmopolitan');toggleMobile();return false">Cosmopolitan</a>
+    </div>
+  </div>
+  <div class="mn-item">
+    <a href="#">documentary</a>
+    <div class="mn-sub">
+      <a href="#" onclick="openProject('Zinnat Ferdous, Boxer');toggleMobile();return false">Zinnat Ferdous, Boxer</a>
+    </div>
+  </div>
+  <div class="mn-item"><a href="#">personal work</a></div>
+  <div class="mn-item"><a href="#" onclick="show('work');toggleMobile();return false">work</a></div>
+  <div class="mn-item"><a href="#" onclick="show('tearsheets');toggleMobile();return false">tearsheets</a></div>
+  <div class="mn-item"><a href="#" onclick="show('motion');toggleMobile();return false">motion</a></div>
+  <div class="mn-item"><a href="https://www.instagram.com/taurathossain/" target="_blank" onclick="toggleMobile()">instagram ↗</a></div>
+  <div class="mn-item"><a href="#" onclick="show('bio');toggleMobile();return false">bio</a></div>
+  <div class="mn-item"><a href="#" onclick="show('contact');toggleMobile();return false">contact</a></div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="page active" id="page-overview">
+  <div class="ov-grid" id="ov-grid"></div>
+</div>
+
+<!-- WORK -->
+<div class="page" id="page-work">
+  <div class="page-header">
+    <h2>work</h2>
+    <span class="meta">Clients &amp; Publications</span>
+  </div>
+  <div class="work-list" id="work-list"></div>
+</div>
+
+<!-- TEARSHEETS -->
+<div class="page" id="page-tearsheets">
+  <div class="page-header"><h2>tearsheets</h2></div>
+  <div class="ts-grid" id="ts-grid"></div>
+</div>
+
+<!-- MOTION -->
+<div class="page" id="page-motion">
+  <div class="page-header">
+    <h2>motion</h2>
+    <span class="meta">Short Films · Under 1 Min</span>
+  </div>
+  <p class="motion-intro">A selection of short video work — documentary moments, campaign footage, and personal explorations in motion.</p>
+  <div class="motion-grid" id="motion-grid"></div>
+</div>
+
+<!-- BIO -->
+<div class="page" id="page-bio">
+  <div class="bio-wrap">
+    <div>
+      <!-- Replace src with your headshot photo file -->
+      <div class="bio-photo">
+        <img src="photos/taurat-hossain-bio.jpg" alt="Taurat Hossain">
+      </div>
+    </div>
+    <div class="bio-text">
+      <h1>Taurat Hossain</h1>
+
+      <p><strong>Taurat Hossain (he/him)</strong> is a New York&ndash;based fashion and editorial photographer.</p>
+
+      <p>Alongside his fashion and commercial work, Taurat photographs selective cultural and editorial assignments with a strong social sensitivity, documenting stories on <em>free speech, social movements, politics, immigration, human rights,</em> and <em>women&rsquo;s reproductive rights</em>.</p>
+
+      <p>His photography has appeared across the styles, art &amp; culture, opinion, and business desks of publications including <em>Architectural Digest, Cosmopolitan</em> (USA and Middle East), <em>The New York Times, L&rsquo;Officiel, Harper&rsquo;s Bazaar Arabia, Bloomberg, The Washington Post, Insider, Vox, The Atlantic, Anadolu Agency, Documented,</em> and other international fashion and culture outlets.</p>
+
+      <p>His work was recognized by <em>The Washington Post</em> as part of the <strong>Best Styles Photos of 2024</strong>, and in <strong>2025 his documentary work in Los Angeles was recognized as a finalist for Photo of the Year</strong>.</p>
+
+      <p>Taurat has also been commissioned to photograph for <em>Bloomberg Originals&rsquo;</em> television program <strong>Bullish</strong>.</p>
+
+      <p>In addition to his photography practice, Taurat is an accredited freelance producer for events, media productions, and performances featuring emerging New York artists, musicians, comedians, and independent theatre&mdash;work that has been featured by <em>Time Out New York</em> and <em>Teen Vogue</em>.</p>
+
+      <p>During the COVID-19 pandemic, Taurat also worked as a writer for the sitcom <strong>The Morning Huddle</strong>.</p>
+
+      <div class="bio-contact">
+        <a href="mailto:tauratphotos@gmail.com">&#128231; tauratphotos@gmail.com</a>
+        <a href="tel:+13236200677">&#128222; 323-620-0677</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="page" id="page-contact">
+  <div class="contact-wrap">
+    <h1>contact</h1>
+
+    <p class="contact-intro">Available for editorial assignments, in fashion and culture, as well as select documentary narratives.</p>
+    <p class="contact-intro">For commercial related work, please email to schedule a Zoom meeting for a consultation.</p>
+    <p class="contact-intro">Based in New York City and available for travel worldwide.</p>
+
+    <div class="contact-direct">
+      <a href="mailto:tauratphotos@gmail.com">&#128231; tauratphotos@gmail.com</a>
+      <a href="tel:+13236200677">&#128222; 323-620-0677</a>
+    </div>
+
+    <div class="contact-divider"></div>
+
+    <div class="cf"><label>name</label><input type="text" placeholder="Your name"></div>
+    <div class="cf"><label>email</label><input type="email" placeholder="your@email.com"></div>
+    <div class="cf"><label>subject</label><input type="text" placeholder="Editorial / Commercial / Documentary / Other"></div>
+    <div class="cf"><label>message</label><textarea placeholder="Tell me about your project..."></textarea></div>
+    <button class="c-submit" onclick="handleContact(event)">send message</button>
+    <p class="contact-sent" id="contact-sent">&#10003; Message sent — thank you, I&rsquo;ll be in touch soon.</p>
+  </div>
+</div>
+
+<!-- PROJECT PAGE -->
+<div id="pp">
+  <div class="pp-head">
+    <h1 class="pp-title" id="pp-title">Project Title</h1>
+    <span class="pp-back" onclick="goBack()">← back to overview</span>
+  </div>
+  <div class="pp-nav">
+    <span class="pp-nb">← prev</span>
+    <span class="pp-nb">next →</span>
+  </div>
+  <div class="pp-gallery" id="pp-gallery"></div>
+  <footer><span>© 2026 Taurat Hossain</span><div class="f-gem"></div><span>New York City</span></footer>
+</div>
+
+<footer id="mf"><span>© 2026 Taurat Hossain</span><div class="f-gem"></div><span>New York City</span></footer>
+</div>
+
+<script>
+const clients=['American Heart Association','Anadolu Ajensi','Architectural Digest','Bloomberg','Brookstone','Condé Nast','Cosmopolitan','Cult of Individuality','Documented','Dream Pairs','EPA','Groovevolt',"Harper's Bazaar Arabia",'Insider',"L'Oréal",'New Balance','OnlyHearts','Popsugar','The Atlantic','The New York Times','The Washington Post','The United Nations','Von Dutch','Vox','WeWork','Wells Fargo'];
+const caps=['LeBlanc Studios FW26','Lettonne FW26','Meg Donnelly for Groovevolt','Natalie Jane for Groovevolt','Cosmopolitan Middle East','TYVY NYC Brand Launch','Sibling Rivalry for Signed Mgmt.','SelfmadeSkincare','Cult of Individuality F/W 2024','Choklids','Azzah Sultan for trotter&sholer','Zinnat Ferdous, Boxer','Gloria Steinem & Synclaire Warren','Connie Chung & Maury Povich for The Washington Post','Ghosts of Chinatown','Bloomberg Originals — Bullish','No Kings Day for Documented','St. James Place Annual Block Party','Business Insider Feature Profile','Alice Austen House','Peace for Palestine','The Way We Dress When We Are Ourselves'];
+const sw=['hsl(34,16%,70%)','hsl(28,18%,64%)','hsl(38,12%,72%)','hsl(24,20%,66%)','hsl(42,14%,68%)','hsl(30,16%,62%)','hsl(36,10%,66%)','hsl(26,20%,70%)','hsl(32,14%,68%)','hsl(40,12%,74%)'];
+const mh=[280,360,310,400,260,340,290,360,250,430,300,440,270,320,380,260,300,350];
+
+const og=document.getElementById('ov-grid');
+caps.forEach((c,i)=>{
+  const d=document.createElement('div');d.className='gi';d.onclick=()=>openProject(c);
+  d.innerHTML=`<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='${mh[i%mh.length]}'%3E%3Crect fill='${encodeURIComponent(sw[i%sw.length])}' width='600' height='${mh[i%mh.length]}'/%3E%3C/svg%3E" alt="${c}" loading="lazy"><div class='gi-cap'>${c}</div>`;
+  og.appendChild(d);
+});
+
+const wl=document.getElementById('work-list');
+clients.forEach(c=>{const d=document.createElement('div');d.className='wli';d.textContent=c;wl.appendChild(d)});
+
+const tg=document.getElementById('ts-grid');
+[320,260,400,280,350,300,380,260,310,340,270,390,260,320,300,350,280].forEach((ht,i)=>{
+  const d=document.createElement('div');d.className='ts-item';
+  d.innerHTML=`<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='${ht}'%3E%3Crect fill='${encodeURIComponent(sw[(i+2)%sw.length])}' width='600' height='${ht}'/%3E%3C/svg%3E" alt="tearsheet ${i+1}" loading="lazy">`;
+  tg.appendChild(d);
+});
+
+const mg=document.getElementById('motion-grid');
+['reel 01','reel 02','behind the scenes','street 01','campaign cut','personal 01'].forEach((l,i)=>{
+  const d=document.createElement('div');d.className='motion-item';
+  d.innerHTML=`<div class='motion-shimmer'></div><div class='motion-inner'><div class='mring'><svg width='13' height='15' viewBox='0 0 13 15'><path d='M1 1L12 7.5L1 14V1Z' fill='rgba(184,144,90,.7)'/></svg></div><span class='mlabel'>${l}</span></div><span class='mdur'>0:${String(Math.floor(Math.random()*52)+6).padStart(2,'0')}</span>`;
+  mg.appendChild(d);
+});
+
+function show(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById('pp').style.display='none';
+  document.getElementById('mf').style.display='';
+  const t=document.getElementById('page-'+p);
+  if(t){t.classList.add('active');window.scrollTo(0,0);}
+}
+function openProject(title){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.getElementById('pp').style.display='block';
+  document.getElementById('mf').style.display='none';
+  document.getElementById('pp-title').textContent=title;
+  const gal=document.getElementById('pp-gallery');gal.innerHTML='';
+  [460,300,520,360,480,320].forEach((ht,i)=>{
+    const d=document.createElement('div');d.className='pp-img';
+    d.innerHTML=`<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='${ht}'%3E%3Crect fill='${encodeURIComponent(sw[(i+3)%sw.length])}' width='800' height='${ht}'/%3E%3C/svg%3E" alt="${title}">`;
+    gal.appendChild(d);
+  });
+  window.scrollTo(0,0);
+}
+function goBack(){document.getElementById('pp').style.display='none';document.getElementById('mf').style.display='';show('overview')}
+function handleContact(e) {
+  e.preventDefault();
+  // To make the form actually send emails, sign up free at formspree.io
+  // and replace the fetch URL with your Formspree endpoint
+  const sent = document.getElementById('contact-sent');
+  if (sent) { sent.style.display = 'block'; }
+}
+
+function toggleMobile(){document.getElementById('mobile-nav').classList.toggle('open')}
+
+/* ── INTRO VIDEO LOGIC ── */
+const vid = document.getElementById('intro-video');
+const placeholder = document.getElementById('intro-placeholder');
+const tel = document.getElementById('t');
+
+// Hide placeholder once video loads & plays
+if (vid) {
+  vid.addEventListener('canplay', () => {
+    if (placeholder) placeholder.style.display = 'none';
+  });
+  // Auto-advance when video ends (even if under 15s)
+  vid.addEventListener('ended', () => {
+    clearInterval(cd);
+    skip();
+  });
+}
+
+// 15-second countdown — auto-skips even if no video file present
+let s = 15;
+const cd = setInterval(() => {
+  s--;
+  tel.textContent = '0:' + String(s).padStart(2, '0');
+  if (s <= 0) { clearInterval(cd); skip(); }
+}, 1000);
+
+function skip() {
+  clearInterval(cd);
+  document.getElementById('intro').classList.add('out');
+  setTimeout(() => document.getElementById('site').classList.add('show'), 400);
+}
+</script>
+</body>
+</html>
